@@ -20,13 +20,15 @@
       true,
       "attribute",
       "app",
-      "camelCase"
+      "camelCase",
+      "diary"
     ],
     "component-selector": [
       true,
       "element",
       "app",
-      "kebab-case"
+      "kebab-case",
+      "diary"
     ],
     "eofline": true,
     "import-blacklist": [
