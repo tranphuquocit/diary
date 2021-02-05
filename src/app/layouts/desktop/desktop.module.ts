@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { DiaryDesktopRoutingModule } from './desktop.routing';
 import { DiaryDesktopComponent } from './desktop.component';
@@ -8,7 +7,7 @@ import { DiaryDesktopComponent } from './desktop.component';
     DiaryDesktopComponent
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
     DiaryDesktopRoutingModule
   ],
   providers: [],

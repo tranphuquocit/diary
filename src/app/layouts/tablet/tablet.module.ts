@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { DiaryTabletComponent } from './tablet.component';
 import { DiaryTabletRoutingModule } from './tablet.routing';
@@ -9,7 +8,7 @@ import { DiaryTabletRoutingModule } from './tablet.routing';
     DiaryTabletComponent
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
     DiaryTabletRoutingModule
   ],
   providers: [],

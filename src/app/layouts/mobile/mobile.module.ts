@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 
 import { DiaryMobileComponent } from './mobile.component';
@@ -10,7 +9,7 @@ import { DiaryMobileRoutingModule } from './mobile.routing';
     DiaryMobileComponent
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
     DiaryMobileRoutingModule
   ],
   providers: [],

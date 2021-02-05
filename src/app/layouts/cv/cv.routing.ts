@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DiaryMobileComponent } from './mobile.component';
-
+import { CVComponent } from './cv.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: DiaryMobileComponent
+    component: CVComponent
   }
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class DiaryMobileRoutingModule { }
+export class CVRoutingModule { }

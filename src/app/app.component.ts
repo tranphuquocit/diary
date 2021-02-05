@@ -14,15 +14,15 @@ export class AppComponent {
     private deviceService: DeviceDetectorService,
     private route: Router
   ) {
-    if(this.deviceService.isDesktop()) {
-      this.route.navigate(['']);
-      console.log('Đây là Web: ', this.deviceService.isDesktop());
-    }else if(this.deviceService.isMobile()) {
-      this.route.navigate(['/m']);
-      console.log('Đây là Mobile: ', this.deviceService.isMobile());
-    } else if (this.deviceService.isTablet()) {
-      this.route.navigate(['/t']);
-      console.log('Đây là Tablel: ', this.deviceService.isTablet());
-    }
+    // if(this.deviceService.isDesktop()) {
+    //   this.route.navigate(['']);
+    //   console.log('Đây là Web: ', this.deviceService.isDesktop());
+    // }else if(this.deviceService.isMobile()) {
+    //   this.route.navigate(['/m']);
+    //   console.log('Đây là Mobile: ', this.deviceService.isMobile());
+    // } else if (this.deviceService.isTablet()) {
+    //   this.route.navigate(['/t']);
+    //   console.log('Đây là Tablel: ', this.deviceService.isTablet());
+    // }
   }
 }

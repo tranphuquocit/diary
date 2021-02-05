@@ -1,0 +1,50 @@
+.container {
+  position: relative;  
+  /*Smart phone nhỏ*/
+  @media screen and (min-width: 240px) {
+    .content {
+      color: green;
+    }
+  }
+
+  /*Iphone(480 x 640)*/
+  @media screen and (min-width: 320px) {
+    .content {
+      color: red;
+    }
+  }
+
+  /*Tablet nhỏ(480 x 640)*/
+  @media screen and (min-width: 480px) {
+    .content {
+      color: yellow;
+    }
+  }
+
+  /*Ipad dọc(768 x 1024)*/
+  @media screen and (min-width: 768px) {
+    .content {
+      width: 200px;
+      height: 100px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: 50px 0 0 -100px;
+      color: blue;
+    }
+  }
+
+  /*Ipad ngang(1024 x 768)*/
+  @media screen and (min-width: 1024px) {
+    .content {
+      color: #FFF;
+    }
+  }
+}
+
+.container {
+  background-color: #FFDC00;
+  width: 80%;
+  height: 90vh;
+  margin: 0 auto;
+}
