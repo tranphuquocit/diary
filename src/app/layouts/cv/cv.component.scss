@@ -49,17 +49,33 @@
   height: 85vh;
   margin: 8vh auto;
 }
+
 .bar {
   width: 5%;
   height: 85vh;
   background-color: #1c1e1f;
+
+  .menu-icon {
+    text-align: center;
+    font-size: 13px;
+    color: white;
+    background-color: #00c483;
+    height: 5.5vh;
+    line-height: 5vh;
+    &:hover {
+      cursor: pointer;
+      font-size: 20px;
+    }
+  }
 }
+
 .avatar {
   width: 40%;
   height: 93vh;
   background-image: url("https://n.foxdsgn.com/niko/black/wp-content/uploads/sites/4/2019/03/niko_img.jpg");
   margin: -4vh 0;
 }
+
 .content {
   width: 55%;
   background-color: #1c1e1f;
