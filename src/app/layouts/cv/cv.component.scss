@@ -67,6 +67,17 @@
       font-size: 20px;
     }
   }
+  .icon-action {
+    margin-top: 10vh;
+    text-align: center;
+    cursor: pointer;
+    .icon {
+      font-size: 14px;
+    }
+    &:hover {
+      color: #00c483;
+    }
+  }
 }
 
 .avatar {
