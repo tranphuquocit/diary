@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  background-color: #78bd34;
+  width: 280vh;
+  margin: 2vh auto;
+}
+.content-input {
+  background-color: #1c1e1f;
+  height:85vh;
+  overflow: auto;
+  overflow-x: hidden;
+  .container {
+    background-color: #1c1e1f;    
+  }
+  .container:first-child {
+    background-color: rgb(202, 122, 17);
+  }
+  .container::nth-child(2n+3) {
+    background-color: aquamarine;
+  }
+}
+.col-5 {
+  display: block;
+  width: 50vh;
+  .input-name {
+    width: 40vh;
+  }
+}

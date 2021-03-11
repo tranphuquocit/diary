@@ -1,0 +1,40 @@
+<div class="content">
+  <div class="container">
+    <p style="margin: auto 2vh;">Người chơi:</p>
+    <div class="col-5">      
+      <input class="input-name" type="text"> {{point1}} điểm
+    </div>
+    <div class="col-5">
+      <input class="input-name" type="text"> {{point2}} điểm
+    </div>
+    <div class="col-5">
+      <input class="input-name" type="text"> {{point3}} điểm
+    </div>
+    <div class="col-5">
+      <input class="input-name" type="text"> {{point4}} điểm
+    </div>
+    <div class="col-5">
+      <input class="input-name" type="text"> {{point5}} điểm
+    </div>
+  </div>
+  <div class="content-input">
+    <div class="container" *ngFor="let index of times">
+      <p style="margin: auto 4vh;"> Vòng {{index > 9 ? index : '0' + index}}: </p>
+      <div class="col-5">      
+        <input class="input-name" (keyup)="inputPoint1($event.target.value)" id='point1{{index}}' type="number">
+      </div>
+      <div class="col-5">
+        <input class="input-name" (keyup)="inputPoint2($event.target.value)" id='point2{{index}}' type="number">
+      </div>
+      <div class="col-5">
+        <input class="input-name" (keyup)="inputPoint3($event.target.value)" id='point3{{index}}' type="number">
+      </div>
+      <div class="col-5">
+        <input class="input-name" (keyup)="inputPoint4($event.target.value)" id='point4{{index}}' type="number">
+      </div>
+      <div class="col-5">
+        <input class="input-name" (keyup)="inputPoint5($event.target.value)" id='point5{{index}}' type="number">
+      </div>
+    </div>
+  </div>
+</div>

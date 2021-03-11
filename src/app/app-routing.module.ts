@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'cv',
+    redirectTo: 'sam',
     pathMatch: 'full'
   },
   {
@@ -23,6 +23,9 @@ const routes: Routes = [
   {
     path: 'cv',
     loadChildren: () => import('./layouts/cv/cv.module').then(cv => cv.CVModule)
+  },{
+    path: 'sam',
+    loadChildren: () => import('./layouts/sam/sam.module').then(sam => sam.SamModule)
   },
 ];
 
