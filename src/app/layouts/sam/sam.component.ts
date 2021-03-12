@@ -6,65 +6,76 @@ import { Component } from '@angular/core';
   styleUrls: ['sam.component.scss']
 })
 export class SamComponent {
-  point1: number = 0;
-  point2: number = 0;
-  point3: number = 0;
-  point4: number = 0;
-  point5: number = 0;
+  player: any = [
+    {
+      tong: 0,
+      diem: []
+    },
+    {
+      tong: 0,
+      diem: []
+    },
+    {
+      tong: 0,
+      diem: []
+    },
+    {
+      tong: 0,
+      diem: []
+    },
+    {
+      tong: 0,
+      diem: []
+    }
+  ];
   times: any = [];
   constructor() {
-    this.times = Array(50).fill([]).map((x,i)=>i); // [0,1,2,3,4]
+    this.times = [1]
   }
-  timesInput = {
-    a: 0,
-    b: 0,
-    c: 0,
-    d: 0,
-    e: 0
-  }
-  inputPoint1(input) {
-    this.timesInput.a = +input;
-    if(input == 0) {
-      this.timesInput.a = this.timesInput.b + this.timesInput.c + this.timesInput.d + this.timesInput.e
-      this.point1 = this.point1 + this.timesInput.a;
-    } else {      
-      this.point1 = this.point1 - input;
+  vongChoiCu = 0;
+  diemVongChoiCu = [];
+  sumPoint(event: any, vong_choi, nguoi_choi) {
+    this.vongChoiCu = vong_choi;
+    this.vongChoiCu > vong_choi ? this.diemVongChoiCu = [] : this.diemVongChoiCu;
+    let input = +event.target.value
+    if (input || input === 0) {
+      this.player[nguoi_choi].diem[vong_choi] = (input > 0 ? -input : '-');
+      this.diemVongChoiCu = []
+      this.player.forEach((ngChoi) => {
+        if (ngChoi.diem[vong_choi]) {
+          this.diemVongChoiCu.push(ngChoi.diem[vong_choi] === '-' ? 0 : ngChoi.diem[vong_choi])
+        }
+      });
     }
   }
-  inputPoint2(input) {
-    this.timesInput.b = +input;
-    if(input == 0) {
-      this.timesInput.b = this.timesInput.a + this.timesInput.c + this.timesInput.d + this.timesInput.e
-      this.point2 = this.point2 + this.timesInput.b
-    } else {
-      this.point2 = this.point2 - input;
+  tongDiemNguoiChoi(vong_choi, nguoi_choi) {
+    this.player.forEach((pl: any, index) => {
+      // Tông điểm của 1 người chơi
+      if (pl.diem.length > 0) {
+        pl.tong = pl.diem.reduce(this.sum);
+      }
+    })
+  }
+  vanTiep() {
+    if(this.vongChoiCu > 0) {
+      this.times.push(this.times[this.times.length - 1] + 1);
+      this.player.forEach(pl => {
+        if(pl.diem[this.vongChoiCu] === '-') {
+          pl.tong = pl.tong - this.diemVongChoiCu.reduce(this.sum);
+        } else if(pl.diem[this.vongChoiCu] === 0) {
+          pl.tong = pl.tong - 20
+        } else {
+          pl.tong = pl.tong + pl.diem[this.vongChoiCu];
+        }
+      })
     }
   }
-  inputPoint3(input) {
-    this.timesInput.c = +input;
-    if(input == 0) {
-      this.timesInput.c = this.timesInput.a + this.timesInput.b + this.timesInput.d + this.timesInput.e
-      this.point3 = this.point3 + this.timesInput.c
-    } else {
-      this.point3 = this.point3 - input;
-    }
+  chatHeo: boolean = false;
+  checkKey(key) {
+    console.log(key)
+    // dấu - là 189
   }
-  inputPoint4(input) {
-    this.timesInput.d = +input;
-    if(input == 0) {
-      this.timesInput.d = this.timesInput.a + this.timesInput.b + this.timesInput.c + this.timesInput.e
-      this.point4 = this.point4 + this.timesInput.d
-    } else {
-      this.point4 = this.point4 - input;
-    }
-  }
-  inputPoint5(input) {
-    this.timesInput.e = +input;
-    if(input == 0) {
-      this.timesInput.e = this.timesInput.a + this.timesInput.b + this.timesInput.c + this.timesInput.d
-      this.point5 = this.point5 + this.timesInput.e
-    } else {
-      this.point5 = this.point5 - input;
-    }
+  sum(a, b) {
+    return a + b;
   }
 }
