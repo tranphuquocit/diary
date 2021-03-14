@@ -57,8 +57,9 @@ export class SamComponent {
     })
   }
   vanTiep() {
+    console.log(this.times[0])
     if(this.vongChoiCu > 0) {
-      this.times.push(this.times[this.times.length - 1] + 1);
+      this.times.unshift(this.times[0] + 1);
       this.player.forEach(pl => {
         if(pl.diem[this.vongChoiCu] === '-') {
           pl.tong = pl.tong - this.diemVongChoiCu.reduce(this.sum);
@@ -72,7 +73,7 @@ export class SamComponent {
   }
   chatHeo: boolean = false;
   checkKey(key) {
-    console.log(key)
+    // console.log(key)
     // dấu - là 189
   }
   sum(a, b) {

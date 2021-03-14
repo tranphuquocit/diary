@@ -1,41 +1,151 @@
-.container {
-  display: flex;
-  background-color: #78bd34;
-  width: 200vh;
-  margin: 2vh auto;
-}
-.content-input {
-  height:85vh;
-  width: 200vh;
-  overflow: auto;
-  overflow-x: hidden;
-  margin: 2vh auto;
-  .container:first-child {
-    background-color: aquamarine;
-    color: black;
-  }
-  .container:nth-child(2n+3) {
-    background-color: aquamarine;
-    color: black
-  }
-}
-.van-tiep {
-  display: block;
-  margin: -21px auto;
-  margin-top: 0;
-  background: red;
-  color: white;
-  font-size: 20px;
-  border: none;
-  height: 30px;
-  width: 100px;
+header {
   text-align: center;
 }
-.col-5 {
-  display: block;
-  width: 36vh;
-  margin: auto;
-  .input-name {
-    width: 23vh;
+.content {
+  width: 200vh;
+  height: auto;
+  margin: 0 auto;
+  // background-color: rebeccapurple;
+}
+.container {
+  display: flex;
+}
+.input-name {
+  width: 20%;
+  text-align: center;
+  .input {
+    width: 95%;
+    height: 50%;
+    text-align: center;
+    font-size: 5vh;
+    font-weight: bold;
   }
+  h2 {
+    margin: 0;
+    font-size: 30px;
+    color: rgba(80, 240, 17, 0.842);
+  }
+}
+.btn-thanh-toan {
+  float: left;
+}
+.btn-van-tiep {
+  float: right;
+}
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.vong-choi {
+  display: flex;
+  height: 100px;
+  width: 200vh;
+  text-align: center;
+  margin-top: 16vh;
+  h3 {
+    position: absolute;
+    left: 49%;
+    font-size: 27px;
+    margin: 5px;
+  }
+  .input-vong-choi {
+    width: 90%;
+    margin: auto;
+    margin-top: 35px;
+    .input {
+      width: 95%;
+      height: 50%;
+      text-align: center;
+      font-size: 5vh;
+      font-weight: bold;
+    }
+  }
+}
+.vong-choi:first-child {
+  color:  rgb(240, 128, 63);
+  margin-top: 6%;
+}
+.vong-choi:nth-child(2n+3) {
+  color: rgb(240, 128, 63);
+  margin-top: 16vh;
+}
+
+
+
+.win {
+  margin-top: 5px;
+  text-align: left;
+  color: green;
+}
+
+.check-win {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.check-win input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.check-win:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.check-win input:checked ~ .checkmark {
+  background-color: green;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.check-win input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.check-win .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
 }
