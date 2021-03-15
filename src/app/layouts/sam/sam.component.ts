@@ -8,68 +8,60 @@ import { Component } from '@angular/core';
 export class SamComponent {
   player: any = [
     {
+      name: 'người chơi 1',
       tong: 0,
       diem: []
     },
     {
+      name: 'người chơi 2',
       tong: 0,
       diem: []
     },
     {
+      name: 'người chơi 3',
       tong: 0,
       diem: []
     },
     {
+      name: 'người chơi 4',
       tong: 0,
       diem: []
     },
     {
+      name: 'người chơi 5',
       tong: 0,
       diem: []
     }
   ];
-  times: any = [];
+  times: any = [1];
   constructor() {
-    this.times = [1]
+    let sam = {
+      player: this.player,
+      times: this.times,
+      vongChoiCu: this.vongChoiCu
+    }
+    let samLocal = localStorage.getItem('sam');
+    if(samLocal) {
+      this.player = JSON.parse(samLocal).player;
+      this.times = JSON.parse(samLocal).times;
+      this.vongChoiCu = JSON.parse(samLocal).vongChoiCu;
+    } else {
+      localStorage.setItem('sam',JSON.stringify(sam));
+    }
   }
   vongChoiCu = 0;
   diemVongChoiCu = [];
-  sumPoint(event: any, vong_choi, nguoi_choi) {
-    this.vongChoiCu = vong_choi;
-    this.vongChoiCu > vong_choi ? this.diemVongChoiCu = [] : this.diemVongChoiCu;
-    let input = +event.target.value
-    if (input || input === 0) {
-      this.player[nguoi_choi].diem[vong_choi] = (input > 0 ? -input : '-');
-      this.diemVongChoiCu = []
-      this.player.forEach((ngChoi) => {
-        if (ngChoi.diem[vong_choi]) {
-          this.diemVongChoiCu.push(ngChoi.diem[vong_choi] === '-' ? 0 : ngChoi.diem[vong_choi])
-        }
-      });
-    }
+  inputName(name: string, index: number) {
+    this.player[index].name = name;
   }
-  tongDiemNguoiChoi(vong_choi, nguoi_choi) {
-    this.player.forEach((pl: any, index) => {
-      // Tông điểm của 1 người chơi
-      if (pl.diem.length > 0) {
-        pl.tong = pl.diem.reduce(this.sum);
-      }
-    })
+  sumPoint(event: any, vong_choi, nguoi_choi) {
+  }
+  checkEvent(event: any, vong_choi: number, nguoi_choi: number) {
+    console.log(event.target.value);
+    this.player[nguoi_choi].diem[vong_choi] = +event.target.value;
   }
   vanTiep() {
-    console.log(this.times[0])
-    if(this.vongChoiCu > 0) {
-      this.times.unshift(this.times[0] + 1);
-      this.player.forEach(pl => {
-        if(pl.diem[this.vongChoiCu] === '-') {
-          pl.tong = pl.tong - this.diemVongChoiCu.reduce(this.sum);
-        } else if(pl.diem[this.vongChoiCu] === 0) {
-          pl.tong = pl.tong - 20
-        } else {
-          pl.tong = pl.tong + pl.diem[this.vongChoiCu];
-        }
-      })
-    }
+    console.log(this.player)
   }
   chatHeo: boolean = false;
   checkKey(key) {
