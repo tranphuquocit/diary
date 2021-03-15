@@ -5,7 +5,7 @@
   margin: 2vh auto;
 }
 .content-input {
-  height:85vh;
+  height:60vh;
   width: 200vh;
   overflow: auto;
   overflow-x: hidden;
@@ -32,10 +32,20 @@
   text-align: center;
 }
 .col-5 {
+  padding: 3px 0;
   display: block;
   width: 36vh;
   margin: auto;
   .input-name {
     width: 23vh;
+  }
+}.col-6 {
+  display: block;
+  width: 34vh;
+  margin: auto;
+  font-size: 2.5vh;
+  color: red;
+  .input-name {
+    width: 15vh;
   }
 }
