@@ -1,10 +1,11 @@
-<header>
+<!-- <header>
   <img src="../../../assets/sam-logo.png" alt="">
-</header>
+</header> -->
 <div class="content">
   <div class="container">
     <div class="input-name" *ngFor="let game of player; let i = index">
-      <input class="input" id="{{i}}" (blur)="inputName($event.target.value, i)" value="{{game.name}}" type="text"[disabled]="vongChoiCu > 0 ? true : false">
+      <input class="input" (blur)="inputName($event.target.value, i)" [value]="game.name" id="{{i}}" type="text"
+      [disabled]="vongChoiCu > 0 ? true : false">
       <h2>{{game.tong}} điểm</h2>
     </div>
   </div>
@@ -15,23 +16,23 @@
       <div class="input-vong-choi" *ngFor="let game of player; let nguoi_choi = index">
         <h3>{{game.name}} ván {{vong_choi > 9 ? vong_choi : '0' + vong_choi}}</h3>
         <input class="input" (blur)="sumPoint($event, vong_choi, nguoi_choi)"
-        (keyup)="checkKey($event.keyCode)" value="{{game.diem[vong_choi]}}"
+        (keyup)="inputCode($event.keyCode)" value="{{game.diem[vong_choi]}}"
           id='point{{vong_choi}}' [disabled]="vong_choi - times.length < 0 ? true : false" type="number">
         <div class="win">
-          <label class="check-win">Người được chọn
-            <input type="radio" (click)="checkEvent($event, vong_choi, nguoi_choi)" value='e' name="radio{{nguoi_choi}}">
+          <label class="check-win">trừ s
+            <input type="radio" (click)="checkEvent($event, vong_choi, nguoi_choi)" value='80' name="radio{{vong_choi}}{{nguoi_choi}}">
             <span class="checkmark"></span>
           </label>
-          <label class="check-win">Chặt 2
-            <input type="radio" (click)="checkEvent($event, vong_choi, nguoi_choi)" value="20" name="radio{{nguoi_choi}}">
+          <label class="check-win">trừ 2
+            <input type="radio" (click)="checkEvent($event, vong_choi, nguoi_choi)" value="20" name="radio{{vong_choi}}{{nguoi_choi}}">
             <span class="checkmark"></span>
           </label>
-          <label class="check-win">Không gì cả
-            <input type="radio" (click)="checkEvent($event, vong_choi, nguoi_choi)" value="0" name="radio{{nguoi_choi}}">
+          <label class="check-win">Win
+            <input type="radio" (click)="checkEvent($event, vong_choi, nguoi_choi)" value="-" name="radio{{vong_choi}}{{nguoi_choi}}">
             <span class="checkmark"></span>
           </label>
-          <label class="check-win">Bị bắt sâm
-            <input type="radio" (click)="checkEvent($event, vong_choi, nguoi_choi)" value="80" name="radio{{nguoi_choi}}">
+          <label class="check-win">0
+            <input type="radio" (click)="checkEvent($event, vong_choi, nguoi_choi)" value="0" name="radio{{vong_choi}}{{nguoi_choi}}">
             <span class="checkmark"></span>
           </label>
         </div>
