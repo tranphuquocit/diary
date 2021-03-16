@@ -51,6 +51,9 @@ export class SamComponent {
     }
   }
   inputCode(code) {
+    if(code === 13) {
+      this.vanTiep();
+    }
     this.keyCode = code
   }
   vongChoiCu = 0;
@@ -82,9 +85,7 @@ export class SamComponent {
   }
   checkEvent(event: any, vong_choi: number, nguoi_choi: number) {
     this.vongChoiCu = vong_choi;
-    // if(event.target.value)
     let input = event.target.value
-    console.log(input)
     if(input === 0) {
       this.player[nguoi_choi].diem[vong_choi] = 0;
     } else if (input === '-') {
@@ -100,27 +101,34 @@ export class SamComponent {
     });
   }
   vanTiep() {
-    console.log(this.player, this.vongChoiCu)
-    if(this.vongChoiCu > 0) {
-      this.times.unshift(this.times[0] + 1);
-      // this.times.push(this.times[this.times.length - 1] + 1);
-      this.player.forEach(pl => {
-        if(pl.diem[this.vongChoiCu] === '-') {
-          console.log(this.diemVongChoiCu.reduce(this.sum), 'Tong')
-          pl.tong = pl.tong - this.diemVongChoiCu.reduce(this.sum);
-        } else {
-          if(pl.diem[this.vongChoiCu] !== '-' && pl.diem[this.vongChoiCu] !== 'e') {
-            pl.tong = pl.tong + pl.diem[this.vongChoiCu];
-          }
-        }
+    let validate = false;
+    this.player.forEach(pl => {
+      if (!pl.diem[this.vongChoiCu] && pl.diem[this.vongChoiCu] !== 0) {
+        validate = true;
+        return;
+      }
       })
+    if(validate) {
+      alert('Nhập điểm vòng đi rồi nhấn chơi tiếp!')
+      return;
     }
+    this.times.unshift(this.times[0] + 1);
+    this.player.forEach(pl => {
+      if(pl.diem[this.vongChoiCu] === '-') {
+        pl.tong = pl.tong - this.diemVongChoiCu.reduce(this.sum);
+      } else {
+        if(pl.diem[this.vongChoiCu] !== '-' && pl.diem[this.vongChoiCu] !== 'e') {
+          pl.tong = pl.tong + pl.diem[this.vongChoiCu];
+        }
+      }
+    })
     let sam = {
       player: this.player,
       times: this.times,
       vongChoiCu: this.vongChoiCu
     }
     localStorage.setItem('sam', JSON.stringify(sam));
+    this.vongChoiCu = 0;
   }
   showThanhToan() {
     alert(`

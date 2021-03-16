@@ -19,19 +19,19 @@
         (keyup)="inputCode($event.keyCode)" value="{{game.diem[vong_choi]}}"
           id='point{{vong_choi}}' [disabled]="vong_choi - times.length < 0 ? true : false" type="number">
         <div class="win">
-          <label class="check-win">trừ s
+          <label class="check-win">Bị Bắt Sâm
             <input type="radio" (click)="checkEvent($event, vong_choi, nguoi_choi)" value='-80' name="radio{{vong_choi}}{{nguoi_choi}}">
             <span class="checkmark"></span>
           </label>
-          <label class="check-win">trừ 2
+          <label class="check-win">Bị Chặt 2
             <input type="radio" (click)="checkEvent($event, vong_choi, nguoi_choi)" value="-20" name="radio{{vong_choi}}{{nguoi_choi}}">
             <span class="checkmark"></span>
           </label>
-          <label class="check-win">Win
+          <label class="check-win">Thắng
             <input type="radio" (click)="checkEvent($event, vong_choi, nguoi_choi)" value="-" name="radio{{vong_choi}}{{nguoi_choi}}">
             <span class="checkmark"></span>
           </label>
-          <label class="check-win">0
+          <label class="check-win">Không bị gì cả!
             <input type="radio" (click)="checkEvent($event, vong_choi, nguoi_choi)" value="0" name="radio{{vong_choi}}{{nguoi_choi}}">
             <span class="checkmark"></span>
           </label>
