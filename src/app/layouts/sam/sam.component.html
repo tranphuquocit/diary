@@ -1,6 +1,6 @@
-<!-- <header>
+<header>
   <img src="../../../assets/sam-logo.png" alt="">
-</header> -->
+</header>
 <div class="content">
   <div class="container">
     <div class="input-name" *ngFor="let game of player; let i = index">
@@ -9,7 +9,7 @@
       <h2>{{game.tong}} điểm</h2>
     </div>
   </div>
-  <a class="button btn-thanh-toan">Thanh toán tiền nhá!</a>
+  <a class="button btn-thanh-toan" (click)="showThanhToan()">Thanh toán tiền nhá!</a>
   <a class="button btn-van-tiep" (click)="vanTiep()">Ván tiếp theo</a>
   <div class="container-vong-choi">
     <div class="vong-choi" *ngFor="let vong_choi of times">
@@ -20,11 +20,11 @@
           id='point{{vong_choi}}' [disabled]="vong_choi - times.length < 0 ? true : false" type="number">
         <div class="win">
           <label class="check-win">trừ s
-            <input type="radio" (click)="checkEvent($event, vong_choi, nguoi_choi)" value='80' name="radio{{vong_choi}}{{nguoi_choi}}">
+            <input type="radio" (click)="checkEvent($event, vong_choi, nguoi_choi)" value='-80' name="radio{{vong_choi}}{{nguoi_choi}}">
             <span class="checkmark"></span>
           </label>
           <label class="check-win">trừ 2
-            <input type="radio" (click)="checkEvent($event, vong_choi, nguoi_choi)" value="20" name="radio{{vong_choi}}{{nguoi_choi}}">
+            <input type="radio" (click)="checkEvent($event, vong_choi, nguoi_choi)" value="-20" name="radio{{vong_choi}}{{nguoi_choi}}">
             <span class="checkmark"></span>
           </label>
           <label class="check-win">Win

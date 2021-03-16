@@ -81,14 +81,16 @@ export class SamComponent {
     }
   }
   checkEvent(event: any, vong_choi: number, nguoi_choi: number) {
+    this.vongChoiCu = vong_choi;
     // if(event.target.value)
     let input = event.target.value
+    console.log(input)
     if(input === 0) {
       this.player[nguoi_choi].diem[vong_choi] = 0;
     } else if (input === '-') {
       this.player[nguoi_choi].diem[vong_choi] = '-';      
     } else {
-      this.player[nguoi_choi].diem[vong_choi] = (input > 0 ? -input : 0);
+      this.player[nguoi_choi].diem[vong_choi] = +input;
     }
     this.diemVongChoiCu = []
     this.player.forEach((ngChoi) => {
@@ -98,12 +100,13 @@ export class SamComponent {
     });
   }
   vanTiep() {
-    console.log(this.player)
+    console.log(this.player, this.vongChoiCu)
     if(this.vongChoiCu > 0) {
       this.times.unshift(this.times[0] + 1);
       // this.times.push(this.times[this.times.length - 1] + 1);
       this.player.forEach(pl => {
-        if(pl.diem[this.vongChoiCu] === '-') { 
+        if(pl.diem[this.vongChoiCu] === '-') {
+          console.log(this.diemVongChoiCu.reduce(this.sum), 'Tong')
           pl.tong = pl.tong - this.diemVongChoiCu.reduce(this.sum);
         } else {
           if(pl.diem[this.vongChoiCu] !== '-' && pl.diem[this.vongChoiCu] !== 'e') {
@@ -118,6 +121,17 @@ export class SamComponent {
       vongChoiCu: this.vongChoiCu
     }
     localStorage.setItem('sam', JSON.stringify(sam));
+  }
+  showThanhToan() {
+    alert(`
+    ${this.player[0].name} ${this.player[0].tong < 0 ? 'Số tiền thanh toán là ': 'Chúc mừng bạn nhận được '} ${this.player[0].tong}
+    ${this.player[1].name} ${this.player[1].tong < 0 ? 'Số tiền thanh toán là ': 'Chúc mừng bạn nhận được '} ${this.player[1].tong}
+    ${this.player[2].name} ${this.player[2].tong < 0 ? 'Số tiền thanh toán là ': 'Chúc mừng bạn nhận được '} ${this.player[2].tong}
+    ${this.player[3].name} ${this.player[3].tong < 0 ? 'Số tiền thanh toán là ': 'Chúc mừng bạn nhận được '} ${this.player[3].tong}
+    ${this.player[4].name} ${this.player[4].tong < 0 ? 'Số tiền thanh toán là ': 'Chúc mừng bạn nhận được '} ${this.player[4].tong}
+    `);
+    localStorage.removeItem('sam');
+    window.location.reload();
   }
   sum(a, b) {
     return a + b;
